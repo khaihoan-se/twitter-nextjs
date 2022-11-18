@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+
+/* Your own custom component styles */
+
+@tailwind utilities;
+
+/* Theme code varib */
+.light {
+   --bg-color: rgb(255, 255, 255);
+   --text-color-normal: rgb(83, 100, 113);
+   --text-color-medium: rgb(15, 20, 25);
+   --bd-color: rgb(239, 243, 244);
+   /* Header */
+   --bg-color-header-hover: rgba(15, 20, 25, 0.1);
+   --bg-color-header-hover-user: rgb(247, 249, 249);
+   /* Trends for you */
+   --bg-color-input: rgb(239, 243, 244);
+   --bg-color-trends: rgb(247, 249, 249);
+   --bg-color-trands-hover: rgba(0, 0, 0, 0.03);
+   --bg-color-button-trands: rgb(15, 20, 25);
+   --bg-color-hover-button-trands: rgb(39, 44, 48);
+   --text-color-button-trands: #ffffff;
+   /* Page */
+   --bg-page-header: rgba(255, 255, 255, 0.85);
+   /* Login */
+   --border-color-button-login: rgb(207, 217, 222);
+   --formlogin-logo-color: rgb(29, 155, 240);
+   --bg-button-next-color: rgb(15, 20, 25);
+   --text-button-next-color: rgb(239, 243, 244);
+   --border-button-forgot-color: rgb(207, 217, 222);
+
+   --bg-modal-login: rgba(0, 0, 0, 0.4);
+
+}
+
+.dark {
+   --bg-color: rgb(0, 0, 0);
+   --text-color-normal: rgb(113, 118, 123);
+   --text-color-medium: rgb(231, 233, 234);
+   --bd-color: rgb(47, 51, 54);
+   /* header */
+   --bg-color-header-hover: rgba(231, 233, 234, 0.1);
+   --bg-color-header-hover-user: rgb(22, 24, 28);
+   /* Trends for you */
+   --bg-color-input: rgb(32, 35, 39);
+   --bg-color-trends: rgb(22, 24, 28);
+   --bg-color-trands-hover: rgba(255, 255, 255, 0.03);
+   --bg-color-button-trands: rgb(239, 243, 244);
+   --bg-color-hover-button-trands: rgb(215, 219, 220);
+   --text-color-button-trands: rgb(15, 20, 25);
+   /* Page */
+   --bg-page-header: rgba(0, 0, 0, 0.65);
+   /* Login */
+   --border-color-button-login: rgb(51, 54, 57);
+   --formlogin-logo-color: rgb(214, 217, 219);
+   --bg-button-next-color: rgb(239, 243, 244);
+   --text-button-next-color: rgb(15, 20, 25);
+   --border-button-forgot-color: rgb(83, 100, 113);
+
+   --bg-modal-login: rgba(91, 112, 131, 0.4);
+}
+
+.blue {
+   --main-color: rgb(29, 155, 240);
+   --hover-maincl-color: rgba(29, 155, 240, 0.102);
+}
+.yellow {
+   --main-color: rgb(255, 212, 0);
+   --hover-maincl-color: rgba(255, 212, 0, 0.102);
+}
+.pink {
+   --main-color: rgb(249, 24, 128);
+   --hover-maincl-color: rgba(249, 24, 128, 0.102);
+}
+.violet {
+   --main-color: rgb(120, 86, 255);
+   --hover-maincl-color: rgba(120, 86, 255, 0.102);
+}
+.orange {
+   --main-color: rgb(255, 122, 0);
+   --hover-maincl-color: rgba(255, 122, 0, 0.102);
+}
+.green {
+   --main-color: rgb(0, 186, 124);
+   --hover-maincl-color: rgba(0, 186, 124, 0.102);
+}
+
+/* 🚁 Reset Css 🚁 */
+svg {
+   @apply fill-current;
+   /* color: #1d9bf01a */
+}
+img {
+   max-width: 100%;
+   height: auto;
+}
+a, button, input {
+   @apply outline-none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+/* 🚁 Layout 🚁 */
+html, body {
+   @apply h-full;
+}
+
+body {
+   @apply m-0 text-sm;
+}
+
+/* ::-webkit-scrollbar { 
+   width: 0 !important;
+   display: none; 
+} */
+
+.app {
+   @apply bg-bg-color text-text-color-medium;
+}  
+
+.hover--button--color:hover {
+   background-color: rgb(26, 140, 216);
+}
+
+.banner__overlay {
+   background-image: linear-gradient(270deg,transparent 10%,rgba(0,0,0,.2),#000);
+}
+
+.bg--modal {
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.focus--input:focus ~ .label--input, .focus--input:not(:placeholder-shown) ~ .label--input {
+   border: 2px solid var(--main-color);
+   padding-top: 8px;
+   font-size: 13px;
+   color: var(--main-color);
+   transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s, color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s, font-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s, padding-top 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.hover__avatar:hover {
+   background-color: rgba(26,26,26,.3);
+}
+
+.hover__cha:hover .hover__con {
+   display: block;
+}
+
+/* Component Tailwindcss */
+.no_banner_user {
+   background: rgb(118, 54, 54);
+}
+
+.button__follow {
+   @apply w-[77px] h-full px-4 bg-bg-color-button-trands hover:bg-bg-color-hover-button-trands text-text-color-button-trands rounded-full flex items-center justify-center text-[15px] font-bold;
+}
+.button__edit {
+   @apply h-full px-4 bg-bg-color text-text-color-medium border-[1px] border-border-color-button-login hover:bg-bg-color-header-hover rounded-full flex items-center justify-center text-[15px] font-bold;
+}
+.button__circle {
+   @apply hover__cha min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full border-[1px] border-border-color-button-login hover:bg-bg-color-header-hover cursor-pointer relative
+}
+
+.color-auttt {
+   background-color: rgba(36, 62, 64, .90);
+}
+.link--text {
+   @apply text-main-color hover:underline;
+}  
+
+.bg_rgba_03 {
+   background: rgba(0, 0, 0, 0.3);
+}
+
+.button_edit_icon {
+   /* backdrop-filter: blur(4px); */
+   background-color: rgba(15, 20, 25, 0.75);
+   @apply min-w-[44px] min-h-[44px] flex items-center justify-center outline-none rounded-full mx-[10px];
+}
+/* Media */
+@media (max-width: 500px) {
+   .header {
+      display: none;
+   }
+}
