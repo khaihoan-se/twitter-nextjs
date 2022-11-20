@@ -28,9 +28,9 @@ const ProfileTopInfo: React.FC<ProfileTopInfoProps> = ({ data }) => {
          </div>
 
          <div className='mb-3 block'>
-            <div className='text-[15px] font-normal leading-5 break-words min-w-0'>
+            <div className='text-[15px] font-normal leading-5 break-words min-w-0 whitespace-pre-line'>
                {/* {changeText(data?.bio)} */}
-               {ReactHtmlParser(changeText(data?.bio))}
+               {data.bio ? ReactHtmlParser(changeText(data?.bio)) : null}
             </div>
             <div className='text-[13px] leading-4 font-normal text-main-color mt-[4px] cursor-pointer hover:underline'>
                <span>Translate bio</span>

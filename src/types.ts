@@ -28,3 +28,8 @@ export interface UserType {
    updatedAt: string
    createdAt: string
 }
+
+export interface BaseInputKeyType {
+   INPUT: 'INPUT'
+   TEXTAREA: 'TEXTAREA'
+}

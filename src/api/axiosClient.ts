@@ -6,12 +6,16 @@ import queryString from 'query-string'
 // Please have a look at here `https://github.com/axios/axios#request-
 // config` for the full list of configs
 const REACT_APP_API_URL = 'http://localhost:3001'
-axios.defaults.withCredentials = true
+// axios.defaults.withCredentials = true
+// console.log(process.env.REACT_APP_API_URL)
 
 const axiosClient = axios.create({
    baseURL: REACT_APP_API_URL,
+   withCredentials: true,
    headers: {
-      'content-type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
    },
    paramsSerializer: (params) => queryString.stringify(params),
 })

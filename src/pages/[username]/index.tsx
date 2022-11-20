@@ -14,13 +14,14 @@ import ProfileTop from '@/components/features/profile/ProfileTop'
 import Link from 'next/link'
 import FollowList from '@/components/shared/FollowList'
 import Head from 'next/head'
-import HeaderProfile from '@/components/features/profile/HeaderProfile'
+import { useSelector } from 'react-redux'
 
 interface ProfilePageProps {
    data: UserType;
 }
 const ProfilePage: NextPage<ProfilePageProps> = ({ data }) => {
    const router = useRouter()
+   const { user } = useSelector((state: any) => state.auth)
    return (
       <React.Fragment>
          <Head>
@@ -35,7 +36,7 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ data }) => {
          <ClientOnly>
             <Page>
                <PageHeader>
-                  {/* <div className='flex items-center h-[53px] px-4'>
+                  <div className='flex items-center h-[53px] px-4'>
                      <div className='min-h-[36px] min-w-[56px] self-stretch bg-transparent flex items-center'>
                         <div className='min-w-[36px] min-h-[36px] bg-transparent outline-none rounded-full hover:bg-bg-color-header-hover flex items-center justify-center cursor-pointer'
                            onClick={() => router.back()}
@@ -45,18 +46,17 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ data }) => {
                      </div>
                      <div className='flex-1 h-full flex justify-center flex-col grow items-start overflow-hidden'>
                         <div className='py-[2px] w-full'>
-                           <h2 className='font-bold text-text-color-medium max-w-full overflow-hidden truncate whitespace-nowrap text-[20px] leading-6 tracking-wide'>{data?.fullname}</h2>
+                           <h2 className='font-bold text-text-color-medium max-w-full overflow-hidden truncate whitespace-nowrap text-[20px] leading-6 tracking-wide'>{data._id === user._id ? user.fullname : data.fullname}</h2>
                         </div>
                         <div className='text-[13px] text-text-color-normal font-normal'>
                            <span>2,307 Tweets</span>
                         </div>
                      </div>
                      <div className='min-w-[56px] min-h-[32px] self-stretch flex justify-center items-end flex-col'></div>
-                  </div> */}
-                  <HeaderProfile fullname={data?.fullname} />
+                  </div>
                </PageHeader>
 
-               <ProfileTop data={data} />
+               <ProfileTop data={data._id === user._id ? user : data} />
                <div className='h-[200vh]'>Profile user | NextJs</div>
                <Link href='/miyase_mahiro'>khaihoaans</Link>
                

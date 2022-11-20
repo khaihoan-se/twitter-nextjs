@@ -112,7 +112,7 @@ body {
 }
 
 /* ::-webkit-scrollbar { 
-   width: 0 !important;
+   width: 8px !important;
    display: none; 
 } */
 
@@ -177,7 +177,10 @@ body {
 .button_edit_icon {
    /* backdrop-filter: blur(4px); */
    background-color: rgba(15, 20, 25, 0.75);
-   @apply min-w-[44px] min-h-[44px] flex items-center justify-center outline-none rounded-full mx-[10px];
+   @apply min-w-[44px] min-h-[44px] flex items-center justify-center outline-none rounded-full mx-[10px] cursor-pointer;
+}
+.button_edit_icon:hover {
+   background-color: rgba(39, 44, 48, 0.75);
 }
 /* Media */
 @media (max-width: 500px) {
