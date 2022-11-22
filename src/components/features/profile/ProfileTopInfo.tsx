@@ -64,11 +64,11 @@ const ProfileTopInfo: React.FC<ProfileTopInfoProps> = ({ data }) => {
 
          <div className='flex-wrap flex-row flex-1 flex'>
             <div className='mr-5'>
-               <span className='text-[14px] leading-4 text-text-color-medium font-bold'>7,555</span>
+               <span className='text-[14px] leading-4 text-text-color-medium font-bold'>{data.following.length}</span>
                <span className='text-[14px] leading-4 text-text-color-normal ml-1'>Following</span>
             </div>
             <div className='mr-5'>
-               <span className='text-[14px] leading-4 text-text-color-medium font-bold'>479.4K</span>
+               <span className='text-[14px] leading-4 text-text-color-medium font-bold'>{data.followers.length}</span>
                <span className='text-[14px] leading-4 text-text-color-normal ml-1'>Followers</span>
             </div>
          </div>

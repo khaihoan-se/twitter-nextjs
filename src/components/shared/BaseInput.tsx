@@ -27,7 +27,7 @@ const BaseInput = React.forwardRef<HTMLInputElement, BaseInput>((props, ref) => 
          setForce(inputProps.defaultValue !== '' ? true : false)
          setForceBD(false)
       })
-   }, [force])
+   }, [force, inputProps.defaultValue])
 
    const BaseInputInput = useMemo(() => {
       return (

@@ -96,8 +96,9 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
                               <div className='bg_rgba_03 absolute inset-0 w-full h-full'></div>
                               {/* Button Upload Banner */}
                               <div className='absolute inset-0 w-full h-full flex items-center justify-center'>
-                                 <div className='button_edit_icon'>
-                                    <CamaraIcon className='w-5 h-5 text-white' />
+                                 <div className='button_edit_icon relative'>
+                                    <CamaraIcon className='w-5 h-5 text-white cursor-pointer' />
+                                    <input type='file' className='absolute inset-0 w-full h-full opacity-0 cursor-pointer' />
                                  </div>
                                  <div className='button_edit_icon'>
                                     <CloseIcon className='w-5 h-5 text-white' />
@@ -129,8 +130,9 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
                                  </div>
                                  <div className='bg_rgba_03 h-full w-full absolute top-0 rounded-full'></div>
                                  <div className='opacity-75 justify-center items-center flex flex-col h-full w-full absolute top-0'>
-                                    <div className='button_edit_icon'>
-                                       <CamaraIcon className='w-5 h-5 text-white' />
+                                    <div className='button_edit_icon relative'>
+                                       <CamaraIcon className='w-5 h-5 text-white cursor-pointer' />
+                                       <input type='file' className='absolute inset-0 w-full h-full opacity-0 cursor-pointer' />
                                     </div>
                                  </div>
                               </div>
