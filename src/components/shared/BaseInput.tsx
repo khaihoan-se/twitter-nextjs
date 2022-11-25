@@ -3,11 +3,6 @@
 import classNames from 'classnames';
 import React, { useEffect, useMemo, useState } from 'react'
 
-// type BaseInput = React.HTMLProps<HTMLInputElement> & React.HTMLProps<HTMLTextAreaElement> & {
-//    label: string;
-//    type: 'INPUT' | 'TEXTAREA';
-//    classNameInput?: string;
-// }
 interface BaseInput extends React.HTMLProps<HTMLInputElement> {
    label: string;
    type: 'INPUT' | 'TEXTAREA';

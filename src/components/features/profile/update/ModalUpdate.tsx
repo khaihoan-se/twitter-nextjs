@@ -10,6 +10,7 @@ import Button from '@/components/shared/Button';
 import Image from '@/components/shared/Image';
 import { dispatchGetUser } from '@/contexts/actions/authAction';
 import { debounce } from '@/utils';
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux'
@@ -27,6 +28,10 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
    const [bio, setBio] = useState(user.bio)
    const [location, setLocation] = useState(user.location)
    const [link, setLink] = useState(user.link)
+   const [banner, setBanner] = useState<string>(user.banner)
+   const [avatar, setAvatar] = useState(user.avatar)
+   const [imgData, setImgData] = useState<any>(null)
+
 
    const handleShowModalEdit = (event: any) => {
       event.stopPropagation();
@@ -45,13 +50,39 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
    const handleChangeLink = debounce((event: React.ChangeEvent<HTMLInputElement>) =>{
       setLink(event.target.value)
    }, 500)
+   // const handleChangeAvatar = (event: any) => {
+   //    setAvatar({...event.target.files})
+   // }
+   const onChangePicture = (e: any) => {
+      if (e.target.files[0]) {
+        console.log("picture: ", e.target.files);
+        setImgData(e.target.files[0]);
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          setAvatar(reader.result);
+        });
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    };
 
    const handleSubmitUpdate = async (event: any) => {
       try {
          event.stopPropagation();
+         const formData: any = new FormData();
+
          const res: any = await AuthApi.refreshToken()         
          setCookie('token', res.accessToken)
-         const data = await UserApi.updateUser(res.accessToken, {fullname, bio, location, link} , user._id)
+
+         formData.append('avatar', imgData)
+
+         const resAvatar = await axios.post('http://localhost:3001/upload/avatar', formData)
+
+         console.log(resAvatar.data);
+
+         const avatarUrl = `http://localhost:3001/profile_images/${resAvatar.data.filename}`
+         
+
+         const data = await UserApi.updateUser(res.accessToken, {fullname, bio, location, link, avatar: avatarUrl} , user._id)
          dispatch(dispatchGetUser(data))
          document.body.style.overflowY = 'auto';
          setIsOpen(false)
@@ -117,8 +148,8 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
                                           <div className='pb-[-100%] w-full block'></div>
                                           <div className='w-full h-full absolute inset-0 block overflow-hidden cursor-pointer'>
                                              <div className='absolute rounded-full overflow-hidden w-full h-full'>
-                                                {user.avatar && <Image  
-                                                   src={user?.avatar}
+                                                {avatar && <Image  
+                                                   src={avatar}
                                                    alt="avatar"
                                                    fill={true}
                                                    className='w-full h-full min-w-full max-w-full min-h-full max-h-full object-cover'
@@ -132,7 +163,7 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
                                  <div className='opacity-75 justify-center items-center flex flex-col h-full w-full absolute top-0'>
                                     <div className='button_edit_icon relative'>
                                        <CamaraIcon className='w-5 h-5 text-white cursor-pointer' />
-                                       <input type='file' className='absolute inset-0 w-full h-full opacity-0 cursor-pointer' />
+                                       <input type='file' onChange={onChangePicture} className='absolute inset-0 w-full h-full opacity-0 cursor-pointer' />
                                     </div>
                                  </div>
                               </div>

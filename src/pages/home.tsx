@@ -1,6 +1,8 @@
 /** @format */
 
 import HeadNewIcon from '@/components/icons/home/HeadNewIcon'
+import BaseButton from '@/components/shared/Button/BaseButton'
+import ButtonS from '@/components/shared/Button'
 import ClientOnly from '@/components/shared/ClientOnly'
 import FollowList from '@/components/shared/FollowList'
 import Page from '@/components/shared/Page'
@@ -34,6 +36,10 @@ const HomePage: NextPage = () => {
                   </div>
                </PageHeader>
                <div>Home Page | NextJs Twitter <Link href='/'><span className='text-main-color'>Login!</span></Link></div>
+               
+               <BaseButton />
+
+               <ButtonS>Hello</ButtonS>
             </Page>
             <TrendRight className='min-h-[1477px]'>
                <Search className='mb-3 w-[350px] min-h-[32px] h-[58px] z-50 flex items-center flex-col fixed top-0 py-2 bg-bg-color' />
