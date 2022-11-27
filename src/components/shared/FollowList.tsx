@@ -4,6 +4,7 @@ import React from 'react'
 import CardUser from './CardUser'
 import Link from 'next/link'
 import Button from './Button'
+import BaseButton from './Button/BaseButton'
 
 const FollowList = () => {
    return (
@@ -15,21 +16,36 @@ const FollowList = () => {
             <div>
                <div className='flex items-center justify-between px-4 py-3 hover:bg-bg-color-trands-hover cursor-pointer'>
                   <CardUser name='Genshin Impact' email='genshinimpact.vi' isHidden={false} classAvatar='w-12 h-12' />
-                  <Button className='button__follow'>
+                  {/* <Button className='button__follow'>
                      <span>Follow</span>
-                  </Button>
+                  </Button> */}
+                  <BaseButton
+                     label='Follow'
+                     maxWidth={false}
+                     backgroundColor='bg-bg-color-button-trands'
+                     bgHoverColor='bg-color-hover-button-trands'
+                     colorText='text-text-color-button-trands'
+                  />
                </div>
                <div className='flex items-center justify-between px-4 py-3 hover:bg-bg-color-trands-hover cursor-pointer'>
                   <CardUser name='Genshin Impact' email='genshinimpact.vi' isHidden={false} classAvatar='w-12 h-12' />
-                  <Button className='button__follow'>
-                     <span>Follow</span>
-                  </Button>
+                  <BaseButton
+                     label='Follow'
+                     maxWidth={false}
+                     backgroundColor='bg-bg-color-button-trands'
+                     bgHoverColor='bg-color-hover-button-trands'
+                     colorText='text-text-color-button-trands'
+                  />
                </div>
                <div className='flex items-center justify-between px-4 py-3 hover:bg-bg-color-trands-hover cursor-pointer'>
                   <CardUser name='Genshin Impact' email='genshinimpact.vi' isHidden={false} classAvatar='w-12 h-12' />
-                  <Button className='button__follow'>
-                     <span>Follow</span>
-                  </Button>
+                  <BaseButton
+                     label='Follow'
+                     maxWidth={false}
+                     backgroundColor='bg-bg-color-button-trands'
+                     bgHoverColor='bg-color-hover-button-trands'
+                     colorText='text-text-color-button-trands'
+                  />
                </div>
             </div>
             <div className='px-4 py-3 hover:bg-bg-color-trands-hover cursor-pointer hover:rounded-b-2xl'>

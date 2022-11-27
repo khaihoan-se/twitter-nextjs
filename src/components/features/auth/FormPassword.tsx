@@ -2,20 +2,20 @@
 
 import EyeClose from '@/components/icons/login/EyeClose'
 import EyeOpen from '@/components/icons/login/EyeOpen'
-import Button from '@/components/shared/Button'
+import BaseButton from '@/components/shared/Button/BaseButton'
 import Input from '@/components/shared/Input'
 import React, { useState } from 'react'
 
 interface FromPasswordProps {
    email?: string;
-   handleLogin: any;
-   handleChangeUser: any
+   handleLogin?: any;
+   handleChangeUser?: any
 }
 const FormPassword: React.FC<FromPasswordProps> = ({ email, handleLogin, handleChangeUser }) => {
    const [ showPassword, setShowPassword ] = useState<boolean>(false)
 
    return (
-      <div className='w-full h-full mx-auto flex flex-col justify-between'>
+      <div className='w-full h-full mx-auto flex flex-col bg-bg-color'>
          <div className='px-20'>
             <div className='text-[31px] text-text-color-medium font-bold my-5'>
                <span>Enter your password</span>
@@ -44,13 +44,16 @@ const FormPassword: React.FC<FromPasswordProps> = ({ email, handleLogin, handleC
                <span className='text-main-color hover:underline cursor-pointer'>Forgot password?</span>
             </div>
          </div>
-         <div className='px-20'>
+         <div className='px-20 mt-48'>
             <div className='my-6 min-w-[52px] min-h-[52px]'>
-               <Button className='w-full px-8 h-[52px] bg-bg-button-next-color rounded-full' onClick={handleLogin}>
-                  <div className='text-text-button-next-color text-[15px] font-bold'>
-                     <span>Log in</span>
-                  </div>
-               </Button>
+               <BaseButton 
+                  shortcutKey='enter' 
+                  onClick={handleLogin} 
+                  label='Log in'
+                  backgroundColor='bg-bg-button-next-color'
+                  colorText='text-text-button-next-color'
+                  className='h-[52px] px-8'
+               />
             </div>
 
             <div className='mb-6 text-text-color-normal'>

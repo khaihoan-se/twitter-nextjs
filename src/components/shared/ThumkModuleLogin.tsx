@@ -2,12 +2,14 @@
 
 import React from 'react'
 import Button from './Button'
-
+import BaseButton from './Button/BaseButton';
+// import { useTranslation } from 'next-i18next'
 interface ThumkModuleLoginProps {
-   handleShowLogin?: any;
-   handleShowRegister?: any
+   onOpenLogin?: () => void;
+   onOpenResgiter?: ()=> void;
 }
-const ThumkModuleLogin: React.FC<ThumkModuleLoginProps> = ({ handleShowLogin, handleShowRegister }) => {   
+const ThumkModuleLogin: React.FC<ThumkModuleLoginProps> = ({ onOpenLogin, onOpenResgiter }) => {
+   // const {t} = useTranslation()
    return (
       <React.Fragment>
          <div className='flex justify-center py-3 fixed left-0 right-0 bottom-0 bg-main-color z-40'>
@@ -23,20 +25,23 @@ const ThumkModuleLogin: React.FC<ThumkModuleLoginProps> = ({ handleShowLogin, ha
                      </div>
                   </div>
                   <div className='mx-4 flex items-center'>
-                     <div>
-                        <Button className='border-[1px] border-white text-white px-4 h-[40px] rounded-full font-bold' 
-                           onClick={handleShowLogin}
-                        >
-                           <span className='max-w-full truncate'>Log in</span>
-                        </Button>
-                     </div>
-                     <div className='ml-3'>
-                        <Button className='border-[1px] border-white px-4 h-[40px] rounded-full bg-white text-[#0f1419] font-bold' 
-                           onClick={handleShowRegister}
-                        >
-                           <span className='max-w-full truncate'>Sign up</span>
-                        </Button>
-                     </div>
+                     <BaseButton
+                        label='Log in'
+                        borderColor='border-white'
+                        colorText='text-white'
+                        className='h-[40px] mx-2'
+                        onClick={onOpenLogin}
+                        maxWidth={false}
+                     />
+                     <BaseButton
+                        label='Sign up'
+                        borderColor='border-white'
+                        colorText='text-[#0f1419]'
+                        backgroundColor='bg-white'
+                        className='h-[40px] mx-2'
+                        onClick={onOpenResgiter}
+                        maxWidth={false}
+                     />
                   </div>
                </div>
             </div>

@@ -1,6 +1,6 @@
 /** @format */
 
-import { UserType } from './../../types'
+import { UserType } from './../../type'
 import { ACTIONS } from '@/contexts/actions'
 
 const initialState: { user: UserType[]; isLogged: boolean } = {

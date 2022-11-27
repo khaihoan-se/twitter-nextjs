@@ -14,8 +14,12 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
+import Typography from '@/components/shared/Typography'
 
 const HomePage: NextPage = () => {
+   const onClick = () => {
+      console.log('button');
+   }
    return (
       <React.Fragment>
          <Head>
@@ -37,9 +41,8 @@ const HomePage: NextPage = () => {
                </PageHeader>
                <div>Home Page | NextJs Twitter <Link href='/'><span className='text-main-color'>Login!</span></Link></div>
                
-               <BaseButton />
-
-               <ButtonS>Hello</ButtonS>
+               <BaseButton label='Sign up with Google' onClick={onClick} />
+               <Typography label='Sign up with Google' className='m-4 p-4 pt-10' onClick={onClick} />
             </Page>
             <TrendRight className='min-h-[1477px]'>
                <Search className='mb-3 w-[350px] min-h-[32px] h-[58px] z-50 flex items-center flex-col fixed top-0 py-2 bg-bg-color' />
