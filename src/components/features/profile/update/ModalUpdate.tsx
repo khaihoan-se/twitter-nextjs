@@ -55,7 +55,6 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
    // }
    const onChangePicture = (e: any) => {
       if (e.target.files[0]) {
-        console.log("picture: ", e.target.files);
         setImgData(e.target.files[0]);
         const reader = new FileReader();
         reader.addEventListener("load", () => {
@@ -68,25 +67,24 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
    const handleSubmitUpdate = async (event: any) => {
       try {
          event.stopPropagation();
-         const formData: any = new FormData();
-
+         
          const res: any = await AuthApi.refreshToken()         
          setCookie('token', res.accessToken)
-
-         formData.append('avatar', imgData)
-
-         const resAvatar = await axios.post('http://localhost:3001/upload/avatar', formData)
-
-         console.log(resAvatar.data);
-
-         const avatarUrl = `http://localhost:3001/profile_images/${resAvatar.data.filename}`
-         
-
-         const data = await UserApi.updateUser(res.accessToken, {fullname, bio, location, link, avatar: avatarUrl} , user._id)
+             
+         const formData: any = new FormData();
+         // const resAvatar = await axios.post('http://localhost:3001/upload/avatar', formData)
+         // const avatarUrl = `http://localhost:3001/profile_images/${resAvatar.data.filename}`
+         let resAvatar: any
+         let avatarUrl: any
+         if(imgData !== null) {
+            formData.append('avatar', imgData)
+            resAvatar = await axios.post('http://localhost:3001/upload/avatar', formData)
+            avatarUrl = `http://localhost:3001/profile_images/${resAvatar.data.filename}`
+         }
+         const data = await UserApi.updateUser(res.accessToken, {fullname, bio, location, link, avatar: imgData !== null ? avatarUrl : avatar} , user._id)
          dispatch(dispatchGetUser(data))
          document.body.style.overflowY = 'auto';
          setIsOpen(false)
-         console.log(data);
       } catch (error) {
          console.log(error);
       }
@@ -111,11 +109,13 @@ const ModalUpdate: React.FC<ModalUpdateProps> = ({ setIsOpen }) => {
                            <h2 className='leading-6 text-[20px] text-text-color-medium font-bold py-[2px] w-full truncate'>Edit profile</h2>
                         </div>
                         <div className='min-w-[56px] min-h-[32px]'>
-                           <Button className='min-h-[32px] w-full px-4 bg-bg-color-button-trands hover:bg-bg-color-hover-button-trands text-text-color-button-trands rounded-full flex items-center justify-center text-[15px] font-bold'
+                           <Button 
+                              label='Save'
+                              backgroundColor='bg-bg-color-button-trands'
+                              bgHoverColor='bg-bg-color-hover-button-trands'
+                              colorText='text-text-color-button-trands'
                               onClick={handleSubmitUpdate}
-                           >
-                              <span>Save</span>
-                           </Button>
+                           />
                         </div>
                      </div>
                      {/* Body Modal Edit */}

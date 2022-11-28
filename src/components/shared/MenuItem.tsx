@@ -16,15 +16,15 @@ const NavItem: React.FC<NavItemProps> = ({ onClick, username, ...props }) => {
   const router = useRouter();
   
   const isActive = useMemo(() => {
+    if(router.route === '/') {
+      return props.href === '/explore'
+    }
     if(props.href === `/${username}/lists`) {
       return router.route === '/[username]/lists'
     }
     if(router.asPath !== props.href) return false
     if(props.href === `/${username}`) {
       return router.route === '/[username]'
-    }
-    if(router.route === '/') {
-      return props.href === '/explore'
     }
     return router.route === props.href
   },[props.href, router.route]);

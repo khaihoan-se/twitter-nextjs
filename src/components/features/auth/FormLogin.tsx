@@ -2,7 +2,7 @@
 
 import Input from '@/components/shared/Input';
 import React from 'react';
-import BaseButton from '@/components/shared/Button/BaseButton';
+import Button from '@/components/shared/Button';
 import GoogleIcon from '@/components/icons/login/GoogleIcon';
 import AppleIcon from '@/components/icons/login/AppleIcon';
 import Typography from '@/components/shared/Typography';
@@ -23,7 +23,7 @@ const FormLogin: React.FC<FormLoginProps> = ({
             <Typography variant='span' label='Sign in to Twitter' />
           </h1>
         </div>
-        <BaseButton 
+        <Button 
           label='Sign up with Google'
           borderColor='border-border-color-button-login'
           Icon={GoogleIcon}
@@ -33,7 +33,7 @@ const FormLogin: React.FC<FormLoginProps> = ({
           colorText='text-[#0f1419]'
           weightText='font-normal'
         />
-         <BaseButton 
+         <Button 
           label='Sign up with Apple'
           borderColor='border-border-color-button-login'
           Icon={AppleIcon}
@@ -61,7 +61,7 @@ const FormLogin: React.FC<FormLoginProps> = ({
           name="email"
           onChange={handleChangeUser}
         />
-        <BaseButton
+        <Button
           backgroundColor='bg-bg-button-next-color'
           colorText='text-text-button-next-color'
           className='my-3'
@@ -69,7 +69,7 @@ const FormLogin: React.FC<FormLoginProps> = ({
           label="Next"
           onClick={handleCheckEmail}
         />
-        <BaseButton
+        <Button
           label='Forgot password?'
           className='my-3'
           borderColor='border-border-button-forgot-color'

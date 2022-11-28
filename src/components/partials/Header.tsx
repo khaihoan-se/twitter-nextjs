@@ -15,6 +15,7 @@ import { useCookies } from 'react-cookie'
 import { dispatchGetUser, dispatchLogout } from '@/contexts/actions/authAction'
 import { useRouter } from 'next/router'
 import useLocalStorage from '@/hooks/useLocalStorage'
+import { useTranslation } from 'next-i18next'
 
 const Header = () => {
    const router = useRouter()
@@ -26,6 +27,7 @@ const Header = () => {
 
    const handleLogout = () => {
       localStorage.clear()
+      removeCookie("token")
       removeCookie("token")
       dispatch(dispatchLogout())
       dispatch(dispatchGetUser([]))

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import isHotKey from "is-hotkey";
 import classNames from 'classnames';
 import Typography from '../Typography';
@@ -8,7 +8,7 @@ import Typography from '../Typography';
 interface IconProps {
    className?: string
 }
-export interface BaseButtonProps
+export interface ButtonProps
    extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
    Icon?: React.ComponentType<IconProps>;
    iconClassName?: string;
@@ -28,10 +28,12 @@ export interface BaseButtonProps
    colorText?: string;
    weightText?: string;
    bgHoverColor?: string;
-   classLabel?: string
+   classLabel?: string;
+   isSubText?: boolean;
+   subText?: string;
 }
 
-const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) => {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
    const { 
       children, 
       label, 
@@ -51,6 +53,8 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>((props, 
       isLoading,
       Icon,
       classLabel,
+      isSubText,
+      subText,
       ...rest
    } = props;
 
@@ -75,10 +79,12 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>((props, 
    !iconClassName?.includes("w-") || !iconClassName?.includes("h-")
    ? classNames("w-6 h-6", iconClassName)
    : iconClassName;
-
+   
+   
    return (
       <React.Fragment>
          <button
+            ref={ref}
             disabled={disabled}
             onClick={(e) => {
                if (disabled) return;
@@ -86,7 +92,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>((props, 
                onClick?.(e);
             }}
             className={classNames(
-               'min-w-[36px] min-h-[36px] rounded-full border-[1px] outline-none overflow-hidden px-4 flex items-center justify-center',
+               'min-w-[36px] min-h-[36px] rounded-full border-[1px] outline-none px-4 flex items-center justify-center relative',
                maxWidth && 'w-full',
                maxHeight && 'h-full',
                borderColor ? borderColor : 'border-transparent',
@@ -94,7 +100,8 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>((props, 
                sizeText ? sizeText : 'text-[15px]',
                colorText ? colorText : 'text-text-color-medium',
                weightText ? weightText : 'font-bold',
-               bgHoverColor ? `hover:bg-${bgHoverColor}` : null,
+               bgHoverColor ? `hover:${bgHoverColor}` : null,
+               isSubText ? 'hover__cha' : 'overflow-hidden',
                className
             )}
             {...rest}
@@ -116,16 +123,23 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>((props, 
                   />
                )
             }
+            {isSubText && (
+               <Typography
+                  className='hover__con hidden absolute top-[37px] left-1/2 translate-x-[-50%] text-[11px] text-white bg-slate-800 px-[4px] py-[1px] rounded-sm'
+                  label={subText} 
+                  variant='span' 
+               />
+            )}
          </button>
       </React.Fragment>
    )
 })
 
-BaseButton.defaultProps = {
+Button.defaultProps = {
    disabled: false,
    maxWidth: true,
 }
 
-BaseButton.displayName = 'BaseButton'
+Button.displayName = 'Button'
 
-export default React.memo(BaseButton)
+export default React.memo(Button)

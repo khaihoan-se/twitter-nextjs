@@ -7,8 +7,14 @@ export function middleware(request: NextRequest) {
    const url = request.nextUrl.clone()
    // Getting cookies from the request
    const cookieToken = request.cookies.get('token')
-   // check if the token is valid page Login   
-   if(url.pathname === '/home' || url.pathname === '/notifications' || url.pathname === '/messages' || url.pathname === '/i/bookmarks') {
+   
+   // check if the token is valid page Login 
+   if(
+      url.pathname === '/home' || 
+      url.pathname === '/notifications' || 
+      url.pathname === '/messages' || 
+      url.pathname === '/i/bookmarks'
+   ) {
       if(cookieToken == undefined) {
          return NextResponse.redirect(new URL('/', request.url))
       }

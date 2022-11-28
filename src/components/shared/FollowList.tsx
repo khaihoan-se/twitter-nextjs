@@ -4,7 +4,7 @@ import React from 'react'
 import CardUser from './CardUser'
 import Link from 'next/link'
 import Button from './Button'
-import BaseButton from './Button/BaseButton'
+import BaseButton from './Button'
 
 const FollowList = () => {
    return (
@@ -23,7 +23,7 @@ const FollowList = () => {
                      label='Follow'
                      maxWidth={false}
                      backgroundColor='bg-bg-color-button-trands'
-                     bgHoverColor='bg-color-hover-button-trands'
+                     bgHoverColor='bg-bg-color-hover-button-trands'
                      colorText='text-text-color-button-trands'
                   />
                </div>
@@ -33,7 +33,7 @@ const FollowList = () => {
                      label='Follow'
                      maxWidth={false}
                      backgroundColor='bg-bg-color-button-trands'
-                     bgHoverColor='bg-color-hover-button-trands'
+                     bgHoverColor='bg-bg-color-hover-button-trands'
                      colorText='text-text-color-button-trands'
                   />
                </div>
@@ -43,7 +43,7 @@ const FollowList = () => {
                      label='Follow'
                      maxWidth={false}
                      backgroundColor='bg-bg-color-button-trands'
-                     bgHoverColor='bg-color-hover-button-trands'
+                     bgHoverColor='bg-bg-color-hover-button-trands'
                      colorText='text-text-color-button-trands'
                   />
                </div>

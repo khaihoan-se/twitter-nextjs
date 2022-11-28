@@ -34,6 +34,7 @@ const BaseLayout: React.FC<BaseLayoutProps> = ({ children, showHeader = true }) 
    }, [auth.isLogged])
 
    if(loading) return <Loading />
+
    return (
       <main className='app light blue'>
          <div className='flex min-h-screen mx-auto bg-bg-color'>

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import AppleIcon from '../icons/login/AppleIcon'
 import GoogleIcon from '../icons/login/GoogleIcon'
-import BaseButton from './Button/BaseButton'
+import Button from './Button'
 import Typography from './Typography'
 
 const TrendBoxLogin = () => {
@@ -17,7 +17,7 @@ const TrendBoxLogin = () => {
             <Typography variant='span' label='Sign up now to get your own personalized timeline!' />
          </div>
          <div className='mx-4 my-2'>
-            <BaseButton
+            <Button
                label='Sign up with Google'
                borderColor='border-border-color-button-login'
                Icon={GoogleIcon}
@@ -27,7 +27,7 @@ const TrendBoxLogin = () => {
                colorText='text-[#0f1419]'
                weightText='font-normal'
             />
-            <BaseButton 
+            <Button 
                label='Sign up with Apple'
                borderColor='border-border-color-button-login'
                Icon={AppleIcon}
@@ -36,7 +36,7 @@ const TrendBoxLogin = () => {
                backgroundColor='bg-white'
                colorText='text-[#0f1419]'
             />
-            <BaseButton
+            <Button
                label='Sign up with phone or email'
                className='h-[40px] my-3'
                borderColor='border-border-button-forgot-color'

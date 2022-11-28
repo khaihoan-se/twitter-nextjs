@@ -4,12 +4,11 @@ import Image from '@/components/shared/Image'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
-import Button from '@/components/shared/Button';
 import MessageOutlineeIcon from '@/components/icons/heades/MessageOutlineIcon';
 import ModalPhoto from '@/components/shared/ModalPhoto';
 import Modal from '@/components/shared/Modal';
 import ModalUpdate from './update/ModalUpdate';
-import BaseButton from '@/components/shared/Button/BaseButton';
+import Button from '@/components/shared/Button';
 
 interface ProfileTopAvatarProps {
    url: string;
@@ -53,10 +52,7 @@ const ProfileTopAvatar: React.FC<ProfileTopAvatarProps> = ({ url, idUser }) => {
             </div>
             <div className='flex justify-start flex-wrap items-end flex-row max-w-full'>
                {user._id === idUser ? (
-                  // <Button className='button__edit' onClick={handleShowModalEdit}>
-                  //    <span>Edit profile</span>
-                  // </Button>
-                  <BaseButton 
+                  <Button 
                      label='Edit profile'
                      backgroundColor='bg-bg-color'
                      bgHoverColor='bg-color-header-hover'
@@ -67,27 +63,35 @@ const ProfileTopAvatar: React.FC<ProfileTopAvatarProps> = ({ url, idUser }) => {
                ) : (
                   <>
                      <div className='mr-2 mb-3'>
-                        <Button className='button__circle'>
-                           <span>
-                              <BiDotsHorizontalRounded className='w-5 h-5 text-text-color-medium' />
-                           </span>
-                           <span className='hover__con hidden absolute top-[37px] left-1/2 translate-x-[-50%] text-[11px] text-white bg-slate-800 px-[4px] py-[1px] rounded-sm'>More</span>
-                        </Button>
+                        <Button
+                           Icon={BiDotsHorizontalRounded}
+                           maxWidth={false}
+                           iconClassName='w-5 h-5 text-color-medium'
+                           borderColor='border-border-color-button-login'
+                           className='px-0'
+                           isSubText={true}
+                           subText='More'
+                        />
                      </div>
                      <div className='mr-2 mb-3'>
-                        <Button className='button__circle'>
-                           <span>
-                              <MessageOutlineeIcon className='w-5 h-5 text-text-color-medium' />
-                           </span>
-                           <span className='hover__con hidden absolute top-[37px] left-1/2 translate-x-[-50%] text-[11px] text-white bg-slate-800 px-[4px] py-[1px] rounded-sm'>
-                              Message
-                           </span>
-                        </Button>
+                        <Button
+                           Icon={MessageOutlineeIcon}
+                           maxWidth={false}
+                           iconClassName='w-5 h-5 text-color-medium'
+                           borderColor='border-border-color-button-login'
+                           className='px-0'
+                           isSubText={true}
+                           subText='Message'
+                        />
                      </div>
                      <div className='mr-2 mb-3'>
-                        <Button className='button__follow'>
-                           <span>Follow</span>
-                        </Button>
+                        <Button
+                           label='Follow'
+                           maxWidth={false}
+                           backgroundColor='bg-bg-color-button-trands'
+                           bgHoverColor='bg-bg-color-hover-button-trands'
+                           colorText='text-text-color-button-trands'
+                        />
                      </div>
                   </>
                )}

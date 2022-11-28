@@ -1,15 +1,15 @@
 /** @format */
 
 import React from 'react'
-import Button from './Button'
-import BaseButton from './Button/BaseButton';
-// import { useTranslation } from 'next-i18next'
+import Button from './Button';
+import { useTranslation } from 'next-i18next'
 interface ThumkModuleLoginProps {
    onOpenLogin?: () => void;
    onOpenResgiter?: ()=> void;
 }
 const ThumkModuleLogin: React.FC<ThumkModuleLoginProps> = ({ onOpenLogin, onOpenResgiter }) => {
-   // const {t} = useTranslation()
+   const { t } = useTranslation("login_page")
+   
    return (
       <React.Fragment>
          <div className='flex justify-center py-3 fixed left-0 right-0 bottom-0 bg-main-color z-40'>
@@ -25,16 +25,16 @@ const ThumkModuleLogin: React.FC<ThumkModuleLoginProps> = ({ onOpenLogin, onOpen
                      </div>
                   </div>
                   <div className='mx-4 flex items-center'>
-                     <BaseButton
-                        label='Log in'
+                     <Button
+                        label={t('Log in')}
                         borderColor='border-white'
                         colorText='text-white'
                         className='h-[40px] mx-2'
                         onClick={onOpenLogin}
                         maxWidth={false}
                      />
-                     <BaseButton
-                        label='Sign up'
+                     <Button
+                        label={t('Sign up')}
                         borderColor='border-white'
                         colorText='text-[#0f1419]'
                         backgroundColor='bg-white'

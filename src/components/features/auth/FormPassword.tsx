@@ -2,7 +2,7 @@
 
 import EyeClose from '@/components/icons/login/EyeClose'
 import EyeOpen from '@/components/icons/login/EyeOpen'
-import BaseButton from '@/components/shared/Button/BaseButton'
+import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import React, { useState } from 'react'
 
@@ -46,7 +46,7 @@ const FormPassword: React.FC<FromPasswordProps> = ({ email, handleLogin, handleC
          </div>
          <div className='px-20 mt-48'>
             <div className='my-6 min-w-[52px] min-h-[52px]'>
-               <BaseButton 
+               <Button 
                   shortcutKey='enter' 
                   onClick={handleLogin} 
                   label='Log in'
